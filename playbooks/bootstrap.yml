@@ -1,0 +1,12 @@
+---
+- name: First-boot configuration for new VMs
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Wait until SSH | WinRM is ready
+      wait_for_connection:
+        timeout: 300
+
+    - name: Copy my dotfiles, install monitoring, etc.
+      import_role:
+        name: myorg.baseline
