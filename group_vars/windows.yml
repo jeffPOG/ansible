@@ -1,0 +1,7 @@
+ansible_connection: winrm
+ansible_port: 5986
+ansible_winrm_scheme: https
+ansible_winrm_transport: ntlm      # or kerberos if domain joined
+ansible_winrm_server_cert_validation: ignore
+ansible_user: ansible
+ansible_password: "{{ vault_ansible_password }}"

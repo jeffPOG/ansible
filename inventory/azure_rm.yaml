@@ -1,0 +1,12 @@
+plugin: azure.azcollection.azure_rm
+azure_cloud_environment: AzureUSGovernment          # <— GovCloud
+auth_source: auto                                   # cli, MSI, or env vars
+# Omit include_vm_resource_groups: to scan **all** RGs the credential can see
+conditional_groups:
+  linux:    "'linux'    in os_type.lower()"
+  windows:  "'windows'  in os_type.lower()'"
+keyed_groups:
+  - prefix: rg
+    key: resource_group
+  - prefix: env
+    key: tags.Environment
